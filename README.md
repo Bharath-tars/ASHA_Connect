@@ -31,53 +31,46 @@ ASHA Connect provides a comprehensive, voice-based AI assistant that:
 
 ### Core Components
 1. **Voice Interface Layer**
-   - Speech-to-text and text-to-speech engines
+   - Speech-to-text and text-to-speech engines (via voice_service.py)
    - Natural language understanding modules
-   - Support for multiple Indian languages
+   - Support for multiple Indian languages (configured in .env)
 
 2. **AI Processing Layer**
-   - Health assessment logic
+   - Health assessment logic (via health_service.py)
    - Decision support system
-   - Llama 3 integration for advanced reasoning
+   - Llama 3 integration for advanced reasoning (via ai_models.py)
 
 3. **Data Management Layer**
-   - Secure patient data storage
-   - Offline-first architecture
-   - Synchronization protocols
+   - Secure patient data storage (via MongoDB)
+   - Offline-first architecture (via offline_manager.py)
+   - Synchronization protocols (via sync_service.py)
 
 4. **Integration Layer**
-   - Connectivity with healthcare systems
-   - Referral management
-   - Reporting and analytics
+   - Connectivity with healthcare systems (via API routes)
+   - Telephony services for voice calls (via telephony.py)
+   - User management and authentication (via user_service.py)
 
 ## Installation
 
 ### Prerequisites
 - Python 3.8+
-- Node.js 14+
 - MongoDB
 - FFmpeg (for audio processing)
+- PyTorch (for AI models)
+- Internet connection for initial setup
 
 ### Setup Instructions
 ```bash
 # Clone the repository
-git clone https://github.com/your-organization/asha-connect.git
-cd asha-connect
+git clone https://github.com/Bharath-tars/ASHA_Connect.git
+cd pragati
 
-# Install backend dependencies
+# Install dependencies
 pip install -r requirements.txt
-
-# Install frontend dependencies
-cd frontend
-npm install
-cd ..
 
 # Set up environment variables
 cp .env.example .env
 # Edit .env with your configuration
-
-# Initialize the database
-python scripts/init_db.py
 
 # Start the application
 python app.py
@@ -85,29 +78,32 @@ python app.py
 
 ## Project Structure
 ```
-asha-connect/
+pragati/
 ├── app.py                  # Main application entry point
 ├── requirements.txt        # Python dependencies
-├── config/                 # Configuration files
-├── models/                 # AI models and adapters
-│   ├── llama/              # Llama 3 integration
-│   ├── speech/             # Speech processing models
-│   └── health/             # Health assessment models
+├── .env.example           # Environment variables template
 ├── services/               # Core business logic
+│   ├── __init__.py         # Package initialization
 │   ├── voice_service.py    # Voice processing service
 │   ├── health_service.py   # Health assessment service
 │   ├── user_service.py     # User management service
-│   └── sync_service.py     # Data synchronization service
+│   ├── sync_service.py     # Data synchronization service
+│   ├── ai_models.py        # AI model integration
+│   ├── offline_manager.py  # Offline functionality management
+│   └── telephony.py        # Telephony services
 ├── data/                   # Data management
+│   ├── __init__.py         # Package initialization
 │   ├── database.py         # Database connection
-│   ├── repositories/       # Data access objects
-│   └── schemas/            # Data schemas
+│   ├── models.py           # Data models
+│   └── repository.py       # Data access layer
 ├── api/                    # API endpoints
-│   ├── routes/             # API routes
-│   └── middleware/         # API middleware
-├── frontend/               # Web interface
-├── mobile/                 # Mobile application
-└── scripts/                # Utility scripts
+│   ├── __init__.py         # Package initialization
+│   └── routes/             # API routes
+│       ├── __init__.py     # Routes initialization
+│       ├── admin_routes.py # Admin interface routes
+│       ├── health_routes.py# Health assessment routes
+│       ├── user_routes.py  # User management routes
+│       └── voice_routes.py # Voice processing routes
 ```
 
 ## Usage
