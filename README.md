@@ -137,4 +137,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Open-source AI community
 
 ## Contact
-For questions or support, please contact [team@genixcure.org](mailto:team@genixcure.org).
+For questions or support, please contact [Sudarsanam Bharath](mailto:bharath.sudarsanam04@gmail.com).
